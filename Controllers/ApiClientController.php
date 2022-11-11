@@ -1,8 +1,8 @@
 <?php
 
 
-require_once "Models/ClientModel.php";
-require_once "Views/ApiView.php";
+require_once "models/ClientModel.php";
+require_once "views/ApiView.php";
 
 
 class ClientApiController {

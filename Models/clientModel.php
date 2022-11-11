@@ -1,6 +1,6 @@
 <?php
 
-require_once "./Models\MainModel.php";
+require_once "./models/MainModel.php";
 
 
 class ClientModel extends Model {

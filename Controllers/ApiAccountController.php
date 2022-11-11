@@ -1,8 +1,8 @@
 <?php
 
 
-require_once "Models/AccountModel.php";
-require_once "Views/ApiView.php";
+require_once "models/AccountModel.php";
+require_once "views/ApiView.php";
 
 
 class AccountApiController {

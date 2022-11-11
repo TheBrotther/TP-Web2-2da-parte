@@ -1,8 +1,8 @@
 <?php
 
-require_once 'Libs/Router.php';
-require_once 'Controllers/ApiClientController.php';
-require_once 'Controllers/ApiAccountController.php';
+require_once 'libs/Router.php';
+require_once 'controllers/ApiClientController.php';
+require_once 'controllers/ApiAccountController.php';
 
 
 

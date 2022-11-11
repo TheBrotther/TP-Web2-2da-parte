@@ -1,7 +1,7 @@
 <?php
 
 
-require_once "./Models/MainModel.php";
+require_once "./models/MainModel.php";
 
 class AccountModel extends Model {
 
@@ -22,6 +22,7 @@ class AccountModel extends Model {
         $query = $this->db->prepare("SELECT* FROM account WHERE account.id_account =?");
         $query->execute([$id]);
         $account = $query->fetch(PDO::FETCH_OBJ);
+        
         return $account;
     }
 
@@ -37,8 +38,6 @@ class AccountModel extends Model {
     function updateAccount($id_account, $coin, $amount, $type_account){
         $query = $this->db->prepare('UPDATE account SET coin=? , amount=?, type_account=?  WHERE id_account = ?');
         $query->execute([$coin, $amount, $type_account,$id_account]);
-
-
     }
 
 
