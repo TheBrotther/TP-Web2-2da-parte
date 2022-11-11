@@ -40,6 +40,18 @@ class ApiClientController {
             $this->view->response("El cliente no existe", 404);
     }
 
+    public function deleteClient($params = null) {
+        $id = $params[':ID'];
+
+        $client = $this->model->getClientById($id);
+        if ($client) {
+            $this->model->deleteClientById($id);
+            $this->view->response($client);
+        } else 
+            $this->view->response("La tarea con el id=$id no existe", 404);
+    }
+
+
     
 
 
