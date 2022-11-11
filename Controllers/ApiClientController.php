@@ -1,7 +1,7 @@
 <?php
 
 
-require_once "Models/clientModel.php";
+require_once "Models/ClientModel.php";
 require_once "Views/ApiView.php";
 
 

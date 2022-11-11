@@ -13,9 +13,16 @@ class AccountModel extends Model {
     public function getAllAccountsbyClient($id_client) {
         $query = $this->db->prepare("SELECT * FROM  account where account.id_client = ?");
         $query->execute([$id_client]);
-        $Accounts = $query->fetchall(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
+        $Accounts = $query->fetchall(PDO::FETCH_OBJ); 
         
         return $Accounts;
+    }
+
+    public function getAccountById($id){
+        $query = $this->db->prepare("SELECT* FROM account WHERE account.id_account =?");
+        $query->execute([$id]);
+        $account = $query->fetch(PDO::FETCH_OBJ);
+        return $account;
     }
 
 
