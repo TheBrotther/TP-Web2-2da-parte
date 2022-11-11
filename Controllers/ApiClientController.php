@@ -52,6 +52,21 @@ class ApiClientController {
     }
 
 
+    public function insertClient($params = null) {
+        $client = $this->getData();
+
+        if (empty($client->dni) || empty($client->alias) || empty($client->city)) {
+            $this->view->response("Complete los datos", 400);
+        } else {
+            $id = $this->model->insertClient($client->dni, $client->alias, $client->city);
+            $client = $this->model->getClientById($id);
+            $this->view->response($client, 201);
+        }
+    }
+
+
+
+
     
 
 
