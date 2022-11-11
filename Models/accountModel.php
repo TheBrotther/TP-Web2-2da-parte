@@ -27,7 +27,7 @@ class AccountModel extends Model {
 
 
 
-    public function CreateAccount( $id_client, $amount, $type_account, $coin) {
+    public function insertAccount( $id_client, $amount, $type_account, $coin) {
         $query = $this->db->prepare("INSERT INTO account (id_client, amount, type_account, coin) VALUES (?, ?, ?, ?)");
         $query->execute([$id_client, $amount, $type_account, $coin]);
 

@@ -13,9 +13,9 @@ class ClientModel extends Model {
     }
 
     public function getClientById($id){
-        $query = $this->db->prepare("SELECT* FROM client WHERE client.id_client =?");
+        $query = $this->db->prepare("SELECT* FROM client WHERE client.id_client = ?");
         $query->execute([$id]);
-        $user= $query->fetch(PDO::FETCH_OBJ);
+        $user = $query->fetch(PDO::FETCH_OBJ);
         return $user;
     }
 
@@ -34,11 +34,12 @@ class ClientModel extends Model {
     }
 
     function updateClient($id_client, $alias, $city){
-        $query = $this->db->prepare('UPDATE client SET alias=?, city=?  WHERE id_client = ?');
-        $query->execute([$alias,$city,$id_client]);
-
+        $query = $this->db->prepare('UPDATE client SET alias = ?, city = ?  WHERE id_client = ?');
+        $query->execute([$alias, $city, $id_client]);
 
     }
+
+
 
 
 

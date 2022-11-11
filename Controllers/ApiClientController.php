@@ -5,7 +5,7 @@ require_once "Models/ClientModel.php";
 require_once "Views/ApiView.php";
 
 
-class ApiClientController {
+class ClientApiController {
     private $model;
     private $view;
     private $data;
@@ -48,7 +48,7 @@ class ApiClientController {
             $this->model->deleteClientById($id);
             $this->view->response($client);
         } else 
-            $this->view->response("La tarea con el id=$id no existe", 404);
+            $this->view->response("La tarea con el id = $id no existe", 404);
     }
 
 
