@@ -40,6 +40,18 @@ class ApiAccountController {
     }
 
 
+    public function deleteAccount($params = null) {
+        $id = $params[':ID'];
+
+        $account = $this->model->getAccountById($id);
+        if ($account) {
+            $this->model->deleteAccount($id);
+            $this->view->response($account);
+        } else 
+            $this->view->response("La tarea con el id=$id no existe", 404);
+    }
+
+
 
 
 

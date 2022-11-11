@@ -42,7 +42,7 @@ class AccountModel extends Model {
     }
 
 
-    function deleteAccountId($id) {
+    function deleteAccount($id) {
         $query = $this->db->prepare('DELETE FROM account WHERE id_account = ?');
         $query->execute([$id]);
     }
