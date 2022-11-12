@@ -13,6 +13,7 @@ $router->addRoute('clients', 'GET', 'ClientApiController', 'getClients');
 $router->addRoute('clients/:ID', 'GET', 'ClientApiController', 'getClient');
 $router->addRoute('clients/:ID', 'DELETE', 'ClientApiController', 'deleteClient');
 $router->addRoute('clients', 'POST', 'ClientApiController', 'insertClient');
+$router->addRoute('clients/:ID', 'PUT', 'ClientApiController', 'updateClient');
 $router->addRoute('accounts', 'GET', 'AccountApiController', 'getAccounts');
 $router->addRoute('accounts/:ID', 'GET', 'AccountApiController', 'getAccount');
 $router->addRoute('accounts/:ID', 'DELETE', 'AccountApiController', 'deleteAccount');

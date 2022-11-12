@@ -10,7 +10,6 @@ class AccountApiController {
     private $view;
     private $data;
 
-
     public function __construct(){
         $this->model = new AccountModel;
         $this->view = new ApiView();
@@ -54,10 +53,10 @@ class AccountApiController {
     public function insertAccount($params = null) {
         $account = $this->getData();
 
-        if (empty($account->id_client) || empty($account->amount) || empty($account->alias) || empty($account->city)) {
+        if (empty($account->id_client) || empty($account->amount) || empty($account->type_account) || empty($account->coin)) {
             $this->view->response("Complete los datos", 400);
         } else {
-            $id = $this->model->insertAccount($account->id_client,$account->dni, $account->alias, $account->city);
+            $id = $this->model->insertAccount($account->id_client, $account->amount, $account->type_account, $account->coin);
             $account = $this->model->getAccountById($id);
             $this->view->response($account, 201);
         }

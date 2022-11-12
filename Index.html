@@ -27,34 +27,96 @@
     </header>
     <main class="container">
 
-        <form id="client-form" action="add" method="POST" class="form-alta  m-4">
-            <div class="container">
-                <h4 class="mb-4">Ingresar un cliente</h4>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Dni</label>
-                        <input name="dni" type="number" class="form-control">
-                    </div>
+
+
+        <div class="accordion mt-4" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingtwo">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Ingresar cliente
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <form id="client-form" action="add-client" method="POST" class="form-alta  m-4">
+                        <div class="container">
+                            <h4 class="mb-4">Ingrese los datos del cliente</h4>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Dni</label>
+                                    <input name="dni" type="number" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Alias</label>
+                                    <input name="alias" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Ciudad</label>
+                                    <input name="city" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">Enviar datos</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Alias</label>
-                        <input name="alias" type="text" class="form-control">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Ciudad</label>
-                        <input name="city" type="text" class="form-control">
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary mt-2">Enviar datos</button>
+              </div>
             </div>
-        </form>
+
+            <div class="accordion mt-4" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingtwo">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsetwo" aria-expanded="true" aria-controls="collapseOne">
+                      Ingresar cuenta
+                    </button>
+                  </h2>
+                  <div id="collapsetwo" class="accordion-collapse collapse show" aria-labelledby="headingtwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <form id="account-form" action="add-account" method="POST" class="form-alta  m-4">
+                            <div class="container">
+                                <h4 class="mb-4">Ingrese los datos de la cuenta</h4>
+                                <label> Selecione un cliente registrado </label>
+                                <select class="form-select" name="id_client" id="select-client" aria-label="Default select example">
+
+                                </select>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Monto</label>
+                                        <input name="amount" type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Tipo de cuenta</label>
+                                        <input name="type_account" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Moneda</label>
+                                        <input name="coin" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-2">Enviar datos</button>
+                            </div>
+                        </form>
+                    </div>
+                  </div>
+                </div>
 
         <h4 class="m-4">Clientes registrados</h4>
 
         <ul id="client-list" class="list-group">
+                
+        </ul>
+
+        
+        <h4 class="m-4">Clientes cuentas registradas</h4>
+
+        <ul id="account-list" class="list-group">
                 
         </ul>
 
