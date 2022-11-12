@@ -7,4 +7,6 @@
     RewriteRule \.(?:css|js|jpe?g|gif|png)$ - [L]
     RewriteRule ^api/(.*)$ ApiRoute.php?resource=$1 [QSA,L]
     
+    
 </IfModule>
+

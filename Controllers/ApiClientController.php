@@ -65,6 +65,24 @@ class ClientApiController {
     }
 
 
+    public function updateClient($params = []) {
+        $id_client = $params[':ID'];
+        $client = $this->model->getClientById($id_client);
+
+        if ($client) {
+            $body = $this->getData();
+            $dni = $body->dni;
+            $alias = $body->alias;
+            $city = $body->city;
+            $client = $this->model-> updateClient($id_client, $dni, $alias, $city);
+            $this->view->response("client id=$id_client actualizada con éxito", 200);
+        }
+        else 
+            $this->view->response("Task id=$id_client not found", 404);
+    }
+
+
+
 
 
     
