@@ -15,8 +15,24 @@ class ClientModel extends Model {
     public function getClientById($id){
         $query = $this->db->prepare("SELECT* FROM client WHERE client.id_client = ?");
         $query->execute([$id]);
-        $user = $query->fetch(PDO::FETCH_OBJ);
-        return $user;
+        $client = $query->fetch(PDO::FETCH_OBJ);
+        return $client;
+    }
+
+    
+    public function clientsByOrdenAsc($col){
+        $query = $this->db->prepare("SELECT * FROM client ORDER BY $col ASC");
+        $query->execute();
+        $clients = $query->fetchall(PDO::FETCH_OBJ);
+        return $clients;
+    }
+    
+
+    public function clientsByOrdenDesc($col){
+        $query = $this->db->prepare("SELECT * FROM client ORDER BY $col DESC");
+        $query->execute();
+        $clients = $query->fetchall(PDO::FETCH_OBJ);
+        return $clients;
     }
 
 

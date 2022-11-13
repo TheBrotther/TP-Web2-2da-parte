@@ -26,6 +26,21 @@ class AccountModel extends Model {
         return $account;
     }
 
+    public function accountsByOrdenAsc($col){
+        $query = $this->db->prepare("SELECT * FROM account ORDER BY $col ASC");
+        $query->execute();
+        $accounts = $query->fetchall(PDO::FETCH_OBJ);
+        return $accounts;
+    }
+    
+
+    public function accountsByOrdenDesc($col){
+        $query = $this->db->prepare("SELECT * FROM account ORDER BY $col DESC");
+        $query->execute();
+        $accounts = $query->fetchall(PDO::FETCH_OBJ);
+        return $accounts;
+    }
+
 
 
     public function insertAccount( $id_client, $amount, $type_account, $coin) {

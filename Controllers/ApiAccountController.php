@@ -14,6 +14,7 @@ class AccountApiController {
         $this->model = new AccountModel;
         $this->view = new ApiView();
         $this->data = file_get_contents("php://input");
+        $this->atributes = array("id_client", "amount", "type_account", "coin");
     }
 
     private function getData() {
@@ -29,6 +30,11 @@ class AccountApiController {
         
     }
 
+    
+    public function getAllAccountsbyClient($params = null) {
+
+    }    
+
     public function getAccount($params = null){
         $id = $params[':ID'];
         $account = $this->model->getAccountById($id);
@@ -36,6 +42,29 @@ class AccountApiController {
            $this->view->response($account);
         else
             $this->view->response("El cliente no existe", 404);
+    }
+
+    public function sanitized_column($column){
+        if (in_array($column, $this->atributes))
+            return true;
+        else
+            return false;
+    }
+
+
+    public function getByOrderedColumn($params = null){
+        if($this->sanitized_column($params[':COLUMN'])) {
+            $col = $params[':COLUMN'];
+            if ($params[':ORDER'] == 'asc')
+                $accounts = $this->model->accountsByOrdenAsc($col);
+            else
+                $accounts = $this->model->accountsByOrdenDesc($col);       
+        
+        }   
+        if ($accounts)
+            $this->view->response($accounts, 200);
+        else
+            $this->view->response('No content', 204);
     }
 
 

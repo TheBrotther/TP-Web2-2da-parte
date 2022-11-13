@@ -9,12 +9,14 @@ class ClientApiController {
     private $model;
     private $view;
     private $data;
+    private $atributes;
 
     
     public function __construct(){
         $this->model = new ClientModel;
         $this->view = new ApiView();
         $this->data = file_get_contents("php://input");
+        $this->atributes = array("dni", "alias", "city");
     }
 
     private function getData() {
@@ -39,6 +41,30 @@ class ClientApiController {
         else
             $this->view->response("El cliente no existe", 404);
     }
+
+    public function sanitized_column($column){
+        if (in_array($column, $this->atributes))
+            return true;
+        else
+            return false;
+    }
+
+
+    public function getByOrderedColumn($params = null){
+        if($this->sanitized_column($params[':COLUMN'])) {
+            $col = $params[':COLUMN'];
+            if ($params[':ORDER'] == 'asc')
+                $clients = $this->model->clientsByOrdenAsc($col);
+            else
+                $clients = $this->model->clientsByOrdenDesc($col);       
+        
+        }   
+        if ($clients)
+            $this->view->response($clients, 200);
+        else
+            $this->view->response('No content', 204);
+    }
+
 
     public function deleteClient($params = null) {
         $id = $params[':ID'];

@@ -98,9 +98,6 @@ function showClients() {
 
 
 
-function editClient() {
-
-}
 
 function optionSelect(){
     for(const client of clients){
