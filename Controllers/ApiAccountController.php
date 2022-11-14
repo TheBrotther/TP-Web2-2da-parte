@@ -32,6 +32,14 @@ class AccountApiController {
 
     
     public function getAllAccountsbyClient($params = null) {
+        $id = $params[':ID'];
+
+        $accounts = $this->model->getAllAccountsbyClient($id);
+
+        if ($accounts)
+            $this->view->response($accounts, 200);
+        else
+            $this->view->response('No content', 204);
 
     }    
 

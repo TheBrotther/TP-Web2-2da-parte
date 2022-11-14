@@ -18,7 +18,7 @@ $router->addRoute('clients', 'POST', 'ClientApiController', 'insertClient');
 $router->addRoute('clients/:ID', 'PUT', 'ClientApiController', 'updateClient');
 $router->addRoute('accounts', 'GET', 'AccountApiController', 'getAccounts');
 $router->addRoute('accounts/:ID', 'GET', 'AccountApiController', 'getAccount');
-$router->addRoute("accounts/clients/:ID", "GET", "AccountApiController", "getComentariosMateria");
+$router->addRoute("accounts/clients/:ID", "GET", "AccountApiController", "getAllAccountsbyClient");
 $router->addRoute('accounts/:ORDER/:COLUMN', 'GET', 'AccountApiController', 'getByOrderedColumn');
 $router->addRoute('accounts/:ID', 'DELETE', 'AccountApiController', 'deleteAccount');
 $router->addRoute('accounts', 'POST', 'AccountApiController', 'insertAccount');
