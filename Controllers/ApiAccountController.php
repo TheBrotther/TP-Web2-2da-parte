@@ -16,7 +16,6 @@ class AccountApiController {
         $this->view = new ApiView();
         $this->data = file_get_contents("php://input");
         $this->atributes = array("id_client", "amount", "type_account", "coin");
-        $this->clientModel= new ClientModel();
     }
 
     private function getData() {

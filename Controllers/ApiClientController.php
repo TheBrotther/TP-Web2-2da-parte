@@ -25,12 +25,28 @@ class ClientApiController {
 
 
     public function getClients(){
-        $clients = $this->model->getAllItems("client");
-        if ($clients)
-            $this->view->response($clients);
-        else
-            $this->view->response("Vacio", 204);
-        
+        if(isset($_GET['COLUMN'])&& isset($_GET['ORDER'])){
+            if($this->sanitized_column($_GET['COLUMN'])) {
+                $col = $_GET['COLUMN'];
+                if ($_GET['ORDER'] == 'asc'){
+                    $clients = $this->model->clientsByOrdenAsc($col);
+                    $this->view->response($clients, 200);
+                }
+                else{
+                    if($_GET['ORDER'] == 'desc'){
+                    $clients = $this->model->clientsByOrdenDesc($col);
+                    $this->view->response($clients, 200);
+                    }
+                }       
+            }
+        }
+        else{
+            $clients = $this->model->getAllItems("client");
+            if ($clients)
+            $this->view->response($clients,200);
+            else
+                $this->view->response("El cliente no existe", 404);
+        }      
     }
 
     public function getClient($params = null){
