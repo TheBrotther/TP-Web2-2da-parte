@@ -7,14 +7,17 @@ require_once "views/ApiView.php";
 
 class AccountApiController {
     private $model;
+    private $clientModel;
     private $view;
     private $data;
+    private $atributes;
 
     public function __construct(){
-        $this->model = new AccountModel;
+        $this->model = new AccountModel();
         $this->view = new ApiView();
         $this->data = file_get_contents("php://input");
         $this->atributes = array("id_client", "amount", "type_account", "coin");
+        $this->clientModel= new ClientModel();
     }
 
     private function getData() {
@@ -101,7 +104,21 @@ class AccountApiController {
 
 
 
+    public function updateAccount($params = []) {
+        $id_account = $params[':ID'];
+        $account = $this->model->getAccountById($id_account);
 
+        if ($account) {
+            $body = $this->getData();
+            $amount = $body->amount;
+            $type_account = $body->type_account;
+            $coin = $body->coin;
+            $account = $this->model->updateAccount($id_account,$coin, $amount, $type_account);
+            $this->view->response("client id=$id_account actualizada con éxito", 200);
+        }
+        else 
+            $this->view->response("Task id=$id_account not found", 404);
+    }
 
 
 

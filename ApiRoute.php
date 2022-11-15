@@ -11,7 +11,6 @@ $router = new Router();
 
 $router->addRoute('clients', 'GET', 'ClientApiController', 'getClients');
 $router->addRoute('clients/:ID', 'GET', 'ClientApiController', 'getClient');
-$router->addRoute('clients/:ID', 'GET', 'ClientApiController', 'getClient');
 $router->addRoute('clients/:ORDER/:COLUMN', 'GET', 'ClientApiController', 'getByOrderedColumn');
 $router->addRoute('clients/:ID', 'DELETE', 'ClientApiController', 'deleteClient');
 $router->addRoute('clients', 'POST', 'ClientApiController', 'insertClient');
@@ -22,6 +21,7 @@ $router->addRoute("accounts/clients/:ID", "GET", "AccountApiController", "getAll
 $router->addRoute('accounts/:ORDER/:COLUMN', 'GET', 'AccountApiController', 'getByOrderedColumn');
 $router->addRoute('accounts/:ID', 'DELETE', 'AccountApiController', 'deleteAccount');
 $router->addRoute('accounts', 'POST', 'AccountApiController', 'insertAccount');
+$router->addRoute('accounts/:ID', 'PUT', 'AccountApiController', 'updateAccount');
 
 
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);
