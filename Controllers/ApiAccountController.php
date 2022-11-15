@@ -7,7 +7,6 @@ require_once "views/ApiView.php";
 
 class AccountApiController {
     private $model;
-    private $clientModel;
     private $view;
     private $data;
     private $atributes;
