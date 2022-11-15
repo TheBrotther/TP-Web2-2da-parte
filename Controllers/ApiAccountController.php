@@ -24,13 +24,30 @@ class AccountApiController {
     }
 
     public function getAccounts(){
-        $accounts = $this->model->getAllItems("account");
-        if ($accounts)
-            $this->view->response($accounts);
-        else
-            $this->view->response("Vacio", 204);
+        if(isset($_GET['COLUMN'])&& isset($_GET['ORDER'])){
+            if($this->sanitized_column($_GET['COLUMN'])) {
+                $col = $_GET['COLUMN'];
+                $order = $_GET['ORDER'];
+                if ($order === 'asc'){
+                    $accounts = $this->model->accountsByOrdenAsc($col);
+                    $this->view->response($accounts, 200);
+                }
+                else{
+                    $accounts = $this->model->accountsByOrdenDesc($col);
+                    $this->view->response($accounts, 200);
+                }
+            }
+        }
+        else{
+            $accounts = $this->model->getAllItems("account");    
+            if ($accounts)
+                $this->view->response($accounts);
+            else
+                $this->view->response("Vacio", 204);
+        }
         
     }
+
 
     
     public function getAllAccountsbyClient($params = null) {
@@ -62,20 +79,7 @@ class AccountApiController {
     }
 
 
-    public function getByOrderedColumn($params = null){
-        if($this->sanitized_column($params[':COLUMN'])) {
-            $col = $params[':COLUMN'];
-            if ($params[':ORDER'] == 'asc')
-                $accounts = $this->model->accountsByOrdenAsc($col);
-            else
-                $accounts = $this->model->accountsByOrdenDesc($col);       
-        
-        }   
-        if ($accounts)
-            $this->view->response($accounts, 200);
-        else
-            $this->view->response('No content', 204);
-    }
+ 
 
 
     public function deleteAccount($params = null) {
