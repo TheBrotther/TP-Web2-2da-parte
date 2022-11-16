@@ -30,7 +30,6 @@ Modifica los datos del cliente con la id ingresada, se debe pasar un JSON como b
 
 Ejemplo:
      { 
-
         "dni": "41623123",  
         "alias": "Carreto",  
         "city": "Gesell"  
@@ -67,7 +66,6 @@ Modifica los datos de la cuenta con la id ingresada, se debe pasar un JSON como 
 
 Ejemplo:
      { 
-
         "amount": "100000000",  
         "type_account": "Plazo fijo",  
         "coin": "Peso"
