@@ -18,6 +18,7 @@ Ejemplo:
         "alias": Gaspacho,  
         "city": Tandil  
      }
+     
 (GET) /api/clients/:ID
 Devuelve la informacion del cliente con la id ingresada.
 
