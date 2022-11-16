@@ -13,10 +13,12 @@ Agrega un cliente pasandole un JSON en el body de la request.
 
 
 Ejemplo:
-     {   
+     {  
+     
         "dni": "41691037",  
         "alias": Gaspacho,  
         "city": Tandil  
+        
      }
      
 (GET) /api/clients/:ID
@@ -30,9 +32,11 @@ Modifica los datos del cliente con la id ingresada, se debe pasar un JSON como b
 
 Ejemplo:
      { 
+     
         "dni": "41623123",  
         "alias": "Carreto",  
         "city": "Gesell"  
+        
      }
      
      
@@ -50,9 +54,11 @@ Agrega una cuenta pasandole un JSON en el body de la request.
 
 Ejemplo:
      {   
+     
         "amount": "3000000",  
         "type_account": "Caja de ahorro",  
         "coin": "Dolar" 
+        
      }
      
 (GET) /api/accounts/:ID
@@ -66,8 +72,10 @@ Modifica los datos de la cuenta con la id ingresada, se debe pasar un JSON como 
 
 Ejemplo:
      { 
+     
         "amount": "100000000",  
         "type_account": "Plazo fijo",  
         "coin": "Peso"
+        
      }
 
